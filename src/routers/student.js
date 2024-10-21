@@ -67,8 +67,8 @@ router.delete("/students/:id", async (req, res) => {
     const student = await Student.findByIdAndDelete(req.params.id);
     if (!student)
       return res
-        .status(404)
-        .json({ success: false, message: "Student not found" });
+        .status(400)
+        .json({ success: false, message: "Invalid student code format" });
     res
       .status(200)
       .json({ success: true, message: "Student deleted successfully" });
